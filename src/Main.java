@@ -3,6 +3,7 @@ public class Main {
         System.out.println("Let's play cards!");
 
         Deck d = new Deck();
+        d.fisher_yates_sort();
         d.display();
     }
 }

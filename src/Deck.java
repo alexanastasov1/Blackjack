@@ -43,5 +43,15 @@ public class Deck {
         }
     }
 
+    public void fisher_yates_sort(){
+        Random r = new Random();
+        for (int i = allCards.length - 1 ; i > 0; i = i - 1){
+            int j = r.nextInt(0, i);
+            Card temp = allCards[i];
+            allCards[i] = allCards[j];
+            allCards[j] = temp;
+        }
+    }
+
 
 }
