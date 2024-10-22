@@ -52,6 +52,4 @@ public class Deck {
             allCards[j] = temp;
         }
     }
-
-
 }
