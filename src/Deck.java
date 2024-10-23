@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Deck {
@@ -15,6 +16,7 @@ public class Deck {
                 counter++;
             }
         }
+        topCard = 0;
     }
 
     public void display() {
@@ -43,10 +45,16 @@ public class Deck {
         }
     }
 
-    public void fisher_yates_shuffle(){
+    private void fisher_yates_shuffle() {
+       /* Fisher Yates algorithm
+       start i at the last position in the array
+       pick a random j from 0 to i inclusive
+       swap elements i and j
+       decrement i and repeat down to position 1
+       */
         Random r = new Random();
-        for (int i = allCards.length - 1 ; i > 0; i = i - 1){
-            int j = r.nextInt(0, i);
+        for (int i=allCards.length-1; i>0; i--) {
+            int j = r.nextInt(0, i+1);
             Card temp = allCards[i];
             allCards[i] = allCards[j];
             allCards[j] = temp;
@@ -55,5 +63,15 @@ public class Deck {
 
     public void shuffle() {
         fisher_yates_shuffle();
+        topCard = 0;
+    }
+
+    public Card deal() {
+        if (topCard >= allCards.length) {  // reshuffle and reset
+            shuffle();
+        }
+        Card draw = allCards[topCard];
+        topCard++;
+        return draw;
     }
 }
