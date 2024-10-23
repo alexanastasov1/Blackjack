@@ -1,8 +1,8 @@
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Deck {
     private Card[] allCards;
+    private int topCard;
 
     public Deck() {
         allCards = new Card[52];
@@ -43,7 +43,7 @@ public class Deck {
         }
     }
 
-    public void fisher_yates_sort(){
+    public void fisher_yates_shuffle(){
         Random r = new Random();
         for (int i = allCards.length - 1 ; i > 0; i = i - 1){
             int j = r.nextInt(0, i);
@@ -51,5 +51,9 @@ public class Deck {
             allCards[i] = allCards[j];
             allCards[j] = temp;
         }
+    }
+
+    public void shuffle() {
+        fisher_yates_shuffle();
     }
 }
